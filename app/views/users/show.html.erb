@@ -1,7 +1,10 @@
 <h1><%= @user.first_name %></h1>
+<%= render 'shared/relationship_buttons', user: @user %>
 
-<h2>Make a post</h2>
-<%= render 'shared/micropost_form' %>
+<% if @user == current_user %>
+  <h2>Make a post</h2>
+  <%= render 'shared/micropost_form' %>
+<% end %>
 
 <h2>Feed</h2>
 <%= render 'shared/feed' %>

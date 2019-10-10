@@ -4,6 +4,7 @@
     <tr>
       <td>
         <%= link_to user.first_name, user %>
+        <%= render 'shared/relationship_buttons', user: user %>
       </td>
     </tr>
   <% end %>

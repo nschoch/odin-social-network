@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_08_152756) do
+ActiveRecord::Schema.define(version: 2019_10_10_001033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,26 @@ ActiveRecord::Schema.define(version: 2019_10_08_152756) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "relationship_requests", force: :cascade do |t|
+    t.integer "requester_id"
+    t.integer "requestee_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["requestee_id"], name: "index_relationship_requests_on_requestee_id"
+    t.index ["requester_id", "requestee_id"], name: "index_relationship_requests_on_requester_id_and_requestee_id", unique: true
+    t.index ["requester_id"], name: "index_relationship_requests_on_requester_id"
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "friender_id"
+    t.integer "friendee_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["friendee_id"], name: "index_relationships_on_friendee_id"
+    t.index ["friender_id", "friendee_id"], name: "index_relationships_on_friender_id_and_friendee_id", unique: true
+    t.index ["friender_id"], name: "index_relationships_on_friender_id"
   end
 
   create_table "users", force: :cascade do |t|

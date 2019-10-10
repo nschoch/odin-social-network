@@ -13,6 +13,7 @@ gem 'pg'
 
 gem 'devise'
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
+gem 'faker'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'

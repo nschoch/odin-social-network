@@ -6,5 +6,8 @@ class CreateRelationshipRequests < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+    add_index :relationship_requests, :requester_id
+    add_index :relationship_requests, :requestee_id
+    add_index :relationship_requests, [:requester_id, :requestee_id], unique: true
   end
 end

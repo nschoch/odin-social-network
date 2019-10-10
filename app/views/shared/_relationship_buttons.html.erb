@@ -1,0 +1,29 @@
+<% if user_signed_in? &&
+      user != nil &&
+      current_user != user &&
+      !current_user.pending_friends.include?(user) &&
+      !current_user.pending_friends_inverse.include?(user) &&
+      !current_user.friends.include?(user) %>
+
+  <%= button_to("Add friend", relationship_requests_path, params: {requestee_id: user.id } ) %>
+<% end %>
+
+<% if user_signed_in? && current_user.pending_friends.include?(user) %>
+  <%= button_to("Cancel Friend Request",
+                relationship_request_path(current_user.relationship_requests.find_by(requestee: user)),
+                method: :delete)  %>
+<% end %>
+
+<% if user_signed_in? &&
+         (current_user.friends_as_requester.include?(user) ||
+         current_user.friends_as_requestee.include?(user)) %>
+  <%= button_to("Unfriend",
+                relationship_path(current_user.specific_friendship_with(user)),
+                method: :delete) %>
+<% end %>
+
+<% if user_signed_in? &&
+   current_user.pending_friends_inverse.include?(user) %>
+   <% byebug %>
+   <%= button_to("Accept Friend Request", relationships_path, params: { friender_id: user.id }) %>
+<% end %>

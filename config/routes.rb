@@ -6,4 +6,6 @@ Rails.application.routes.draw do
 
   resources :users, :only => [:index, :show]
   resources :posts, :only => [:create, :destroy]
+  resources :relationship_requests, :only => [:create, :destroy]
+  resources :relationships, :only => [:create, :destroy]
 end
