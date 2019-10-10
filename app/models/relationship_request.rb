@@ -1,0 +1,2 @@
+class RelationshipRequest < ApplicationRecord
+end
