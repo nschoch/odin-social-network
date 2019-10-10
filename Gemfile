@@ -12,6 +12,7 @@ gem 'rails', '~> 5.2.3'
 gem 'pg'
 
 gem 'devise'
+gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
